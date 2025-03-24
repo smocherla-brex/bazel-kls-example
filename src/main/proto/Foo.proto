@@ -1,0 +1,7 @@
+syntax="proto3";
+
+option java_package="foo.helloworld.proto";
+
+message Hello {
+  string greeting = 1;
+}

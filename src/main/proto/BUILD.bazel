@@ -1,0 +1,11 @@
+proto_library(
+    name = "foo_proto",
+    srcs = ["Foo.proto"],
+    visibility = ["//visibility:public"],
+)
+
+java_proto_library(
+    name = "foo_java_proto",
+    visibility = ["//visibility:public"],
+    deps = [":foo_proto"],
+)
