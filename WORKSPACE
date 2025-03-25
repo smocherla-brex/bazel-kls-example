@@ -16,9 +16,7 @@ load("@io_bazel_rules_kotlin//kotlin:repositories.bzl", "kotlin_repositories")
 
 kotlin_repositories()  # if you want the default. Otherwise see custom kotlinc distribution below
 
-load("@io_bazel_rules_kotlin//kotlin:core.bzl", "kt_register_toolchains")
-
-kt_register_toolchains()  # to use the default toolchain, otherwise see toolchains below
+register_toolchains("//:kotlin_toolchain")  # to use the default toolchain, otherwise see toolchains below
 
 http_archive(
     name = "rules_proto",
@@ -65,7 +63,12 @@ maven_install(
         "com.google.protobuf:protobuf-java:3.18.2",
         "com.google.protobuf:protobuf-java-util:3.18.2",
         "jakarta.inject:jakarta.inject-api:2.0.1",
+        "org.jetbrains.kotlin:kotlin-stdlib:1.9.23",
+        "org.jetbrains.kotlin:kotlin-stdlib-common:1.9.23",
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.23",
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.23",
     ],
+    fetch_sources = True,
     maven_install_json = "//:maven_install.json",
     repositories = [
         "https://maven.google.com",
