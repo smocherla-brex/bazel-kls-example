@@ -1,0 +1,25 @@
+load("@io_bazel_rules_kotlin//kotlin:jvm.bzl", "kt_jvm_test", "kt_jvm_library")
+
+kt_jvm_library(
+    name = "hello",
+    srcs = ["HelloTest.kt"],
+    deps = [
+        "@maven//:io_kotest_kotest_common_jvm",
+        "@maven//:io_kotest_kotest_framework_discovery_jvm",
+        "@maven//:io_kotest_kotest_framework_engine_jvm",
+        "@maven//:io_kotest_kotest_framework_api_jvm",
+        "@maven//:io_kotest_kotest_assertions_shared_jvm",
+        "@maven//:io_kotest_kotest_assertions_core_jvm",
+        "@maven//:io_kotest_kotest_assertions_api_jvm",
+        "@maven//:io_kotest_kotest_runner_junit4_jvm",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+    ]
+
+)
+
+
+kt_jvm_test(
+    name = "test",
+    runtime_deps = [":hello"],
+    test_class = "com.foo.helloworld.HelloWorldTests"
+)
