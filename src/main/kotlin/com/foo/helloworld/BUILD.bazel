@@ -6,6 +6,5 @@ kt_jvm_library(
     deps = [
         "//src/main/proto:foo_java_proto",
         "@maven//:jakarta_inject_jakarta_inject_api",
-        "@maven//:org_jetbrains_kotlin_kotlin_stdlib",
     ],
 )
