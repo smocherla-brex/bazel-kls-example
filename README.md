@@ -17,6 +17,6 @@ Now you can see the syntax highlighing and code completion working as expected a
 To run the application, you can use the following command.
 
 ```bash
-bazel run //src/main/kotlin/com/foo/helloworld:lib
+bazel run //src/main/kotlin/com/foo/helloworld:app
 ```
 
