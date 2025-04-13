@@ -1,0 +1,12 @@
+{
+    "configurations": [
+    {
+        "type": "kotlin",
+        "name": "Launch Kotlin with Bazel",
+        "request": "launch",
+        "bazelTarget": "//src/main/kotlin/com/foo/helloworld:app",
+        "mainClass": "com.foo.helloworld.Application",
+        "workspaceRoot": "${workspaceFolder}"
+    }
+    ]
+}

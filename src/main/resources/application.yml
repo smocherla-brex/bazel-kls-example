@@ -1,0 +1,29 @@
+micronaut:
+  application:
+    name: hello-world
+  server:
+    port: 8080
+  
+  # Debug logging
+  logger:
+    levels:
+      io.micronaut: DEBUG
+      io.netty: DEBUG
+      com.foo.helloworld: DEBUG
+
+# Enable and configure management endpoints
+endpoints:
+  all:
+    enabled: true
+    sensitive: false  # Make all endpoints non-sensitive for easier testing
+  health:
+    enabled: true
+    details-visible: ANONYMOUS
+  info:
+    enabled: true
+  routes:
+    enabled: true
+  beans:
+    enabled: true
+  loggers:
+    enabled: true

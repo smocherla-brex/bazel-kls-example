@@ -1,8 +1,38 @@
-load("@io_bazel_rules_kotlin//kotlin:core.bzl", "define_kt_toolchain")
+load("@io_bazel_rules_kotlin//kotlin:core.bzl", "define_kt_toolchain", "kt_ksp_plugin")
+load("@io_bazel_rules_kotlin//kotlin/internal:opts.bzl", "kt_kotlinc_options")
+
 
 define_kt_toolchain(
     name = "kotlin_toolchain",
     api_version = "1.9",
     jvm_target = "11",
     language_version = "1.9",
+    kotlinc_options = ":kotlinc_options",
+)
+
+kt_kotlinc_options(
+    name = "kotlinc_options",
+    java_parameters = True,
+)
+
+kt_ksp_plugin(
+    name = "micronaut_ksp_type_element_plugin",
+    processor_class = "io.micronaut.kotlin.processing.visitor.TypeElementSymbolProcessorProvider",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@maven//:io_micronaut_micronaut_inject_kotlin",
+        "@maven//:jakarta_inject_jakarta_inject_api",
+        "@maven//:jakarta_validation_jakarta_validation_api",
+    ],
+)
+
+kt_ksp_plugin(
+    name = "micronaut_ksp_bean_processor_plugin",
+    processor_class = "io.micronaut.kotlin.processing.beans.BeanDefinitionProcessorProvider",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@maven//:io_micronaut_micronaut_inject_kotlin",
+        "@maven//:jakarta_inject_jakarta_inject_api",
+        "@maven//:jakarta_validation_jakarta_validation_api",
+    ],
 )
